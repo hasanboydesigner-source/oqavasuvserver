@@ -1,0 +1,28 @@
+import mongoose from 'mongoose';
+
+const telegramUserSchema = new mongoose.Schema({
+    chatId: {
+        type: String,
+        sparse: true,
+        unique: true
+    },
+    username: {
+        type: String,
+        sparse: true,
+        unique: true
+    },
+    firstName: String,
+    lastName: String,
+    isActive: {
+        type: Boolean,
+        default: true
+    },
+    subscribedAt: {
+        type: Date,
+        default: Date.now
+    }
+}, {
+    timestamps: true
+});
+
+export default mongoose.model('TelegramUser', telegramUserSchema);
